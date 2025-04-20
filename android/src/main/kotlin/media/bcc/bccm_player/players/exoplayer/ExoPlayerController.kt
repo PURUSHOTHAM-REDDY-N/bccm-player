@@ -53,15 +53,6 @@ class ExoPlayerController(
         .setTrackSelector(trackSelector)
         .setAudioAttributes(AudioAttributes.DEFAULT, true)
         .setVideoScalingMode(VIDEO_SCALING_MODE_SCALE_TO_FIT)
-        .setMediaSourceFactory(
-            DefaultMediaSourceFactory(context).setDataSourceFactory(
-                CacheDataSource.Factory()
-                    .setCache(Downloader.getCache(context))
-                    .setUpstreamDataSourceFactory(DefaultHttpDataSource.Factory())
-                    .setCacheWriteDataSinkFactory(null)
-            )
-        )
-        .setLoadControl(getLoadControlForBufferMode(bufferMode))
         .build()
 
     override val player: ForwardingPlayer
